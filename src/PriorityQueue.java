@@ -26,6 +26,7 @@ public class PriorityQueue<E extends Comparable<E>> {
      */
     public void add(E element) {
 
+
     }
 
     /**
@@ -37,6 +38,10 @@ public class PriorityQueue<E extends Comparable<E>> {
      */
     private void swap(int posOne, int posTwo) {
 
+        E tmp = myHeap.get(posOne);
+        myHeap.set(posOne, myHeap.get(posTwo));
+        myHeap.set(posTwo, tmp);
+
     }
 
     /**
@@ -46,7 +51,7 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @return true if the element is in the queue, false otherwise
      */
     public boolean contains(E element) {
-        return false;
+        return myHeap.contains(element);
     }
 
     /**
@@ -56,7 +61,9 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @return the element of highest priority queue
      */
     public E peek() {
-        return null;
+        if (myHeap.size() == 0) {return null;}
+
+        return myHeap.get(0);
     }
 
     /**
@@ -88,7 +95,10 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @return true if an element was removed from the queue, false otherwise
      */
     public boolean remove(E element) {
-        return false;
+        if (!(myHeap.contains(element))) {return false;}
+
+
+
     }
 
     /**
@@ -97,7 +107,7 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @return the number of elements in the queue
      */
     public int size() {
-        return -1;
+        return myHeap.size();
     }
 
     /**
