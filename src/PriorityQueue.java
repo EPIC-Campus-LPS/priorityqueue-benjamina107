@@ -25,9 +25,45 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @param element the element to be added
      */
     public void add(E element) {
+        myHeap.add(element);
 
+        int c = myHeap.size();
+
+        while (c > 1 && myHeap.get(c) < myHeap.get(getParent(c))) {
+            swap(c, getParent(c));
+            c = getParent(c);
+        }
 
     }
+
+    /**
+     * Returns the parent index of the current item.
+     *
+     * @param current the item to find the parent of.
+     */
+    public int getParent(int current) {
+        return (int) Math.floor(current / 2);
+    }
+
+    /**
+     * Returns the left child index of the current item.
+     *
+     * @param current the item to find the left child of.
+     */
+    public int getLeft(int current) {
+        return current * 2;
+    }
+
+
+    /**
+     * Returns the right child index of the current item.
+     *
+     * @param current the item to find the left child of.
+     */
+    public int getRight(int current) {
+        return (current * 2) + 1;
+    }
+
 
     /**
      * Swaps two elements in the queue.
@@ -97,8 +133,7 @@ public class PriorityQueue<E extends Comparable<E>> {
     public boolean remove(E element) {
         if (!(myHeap.contains(element))) {return false;}
 
-
-
+        return myHeap.remove(element);
     }
 
     /**
@@ -118,7 +153,16 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @return the String representation of the heap
      */
     public String toString() {
-        return "toString";
+        if (myHeap.size() == 0) return "";
+
+        String rt = myHeap.get(0).toString();
+
+        for(E x : myHeap) {
+
+            rt += x.toString();
+
+        }
+        return rt;
     }
 
 
