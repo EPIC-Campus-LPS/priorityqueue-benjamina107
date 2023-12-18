@@ -127,6 +127,13 @@ public class PriorityQueue<E extends Comparable<E>> {
      */
     private void heapify(int pos) {
 
+        if (getRight(pos) > myHeap.size()) {heapify(getRight(pos));}
+        if (getLeft(pos) > myHeap.size()) {heapify(getLeft(pos));}
+
+        if (myHeap.get(getParent(pos)) > myHeap.get(pos)) {
+            swap(pos, getParent(pos));
+        }
+
     }
 
     /**
@@ -166,7 +173,7 @@ public class PriorityQueue<E extends Comparable<E>> {
 
         for(E x : myHeap) {
 
-            rt += x.toString();
+            rt += x.toString() + " ";
 
         }
         return rt;
@@ -179,9 +186,6 @@ public class PriorityQueue<E extends Comparable<E>> {
      *
      * @param args
      */
-    public static void main(String[] args) {
-// TODO Auto-generated method stub
-
-    }
+    public static void main(String[] args) {    }
 
 }
