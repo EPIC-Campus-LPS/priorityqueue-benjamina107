@@ -109,7 +109,14 @@ public class PriorityQueue<E extends Comparable<E>> {
      * @return the element of highest priority
      */
     public E poll() {
-        return null;
+
+        if (myHeap.size() == 0) {return null;}
+
+
+        swap(1, myHeap.size());
+        E min = myHeap.remove(myHeap.size());
+        heapify(0);
+        return min;
     }
 
     /**
